@@ -12,9 +12,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     $(".js-more").on("click", function() {
       var id = $(this).data("id");
-      $.get("/description/" + id, function(data) {
-        document.getElementById("description-" + id).innerText = data;
-      });
+      $.get("/description/" + id, function(data) {document.getElementById("description-" + id).innerText = data;});
       $.get("/inventory/" + id, function(data) {
         if(data === "true") {
           document.getElementById("description-" + id).innerHTML += "<br><br>Available";
@@ -24,5 +22,5 @@
         }
       });
     });
-  }, false);
+  });
 </script>
