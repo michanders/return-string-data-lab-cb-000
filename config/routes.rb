@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'home', to: 'static#home'
-  resources :orders
-  resources :invoices
+  get '/inventory/:id', to: 'products#inventory'
+  get '/description/:id', to: 'products#description'
+  resources :orders, :invoices, :products
 end
