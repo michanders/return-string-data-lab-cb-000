@@ -7,11 +7,18 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
-  
-  def create  
+
+  def create
     @product = Product.find_or_create_by(prod_params)
     redirect to products_path
-    
+
+  end
+
+
+  private
+
+  def prod_params
+    params.require(:product).permit(:name, :price, :description, :inventory)
   end
 
 end
