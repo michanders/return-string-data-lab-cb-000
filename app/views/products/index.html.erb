@@ -2,12 +2,11 @@
   <%@products.each do |prod|%>
     <li>
       <h1><%=prod.name %></h1>
-      <p id="description-<%= prod.id %>"><%= truncate prod.description%></p>
-      <%=button_tag "More Info", class: "js-more", data: { id: prod.id }%>
+      <p id="description-<%=prod.id%>"><%=truncate prod.description%></p>
+      <%=button_tag "More Info", class: "js-more", data: {id: prod.id}%>
     </li>
   <%end%>
 </ul>
-
 <script type="text/javascript" charset="utf-8">
   document.addEventListener('DOMContentLoaded', function() {
     $(".js-more").on("click", function() {
@@ -15,10 +14,10 @@
       $.get("/description/" + id, function(data) {document.getElementById("description-" + id).innerText = data;});
       $.get("/inventory/" + id, function(data) {
         if(data === "true") {
-          document.getElementById("description-" + id).innerHTML += "<br><br>Available";
+          document.getElementById("description-" + id).innerHTML += "Available";
         }
         else {
-          document.getElementById("description-" + id).innerHTML += "<br><br>Sold Out";
+          document.getElementById("description-" + id).innerHTML += "Sold Out";
         }
       });
     });
