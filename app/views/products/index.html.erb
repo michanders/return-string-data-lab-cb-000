@@ -18,7 +18,7 @@
       $.get("/inventory/" + id, function(data) {
         if(data === "true") {
           document.getElementById("description-" + id).innerHTML += "<br><br>Available";
-        } 
+        }
         else {
           document.getElementById("description-" + id).innerHTML += "<br><br>Sold Out";
         }
