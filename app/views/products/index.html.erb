@@ -1,11 +1,11 @@
 <ul>
-  <% @products.each do |product| %>
+  <%@products.each do |prod|%>
     <li>
-      <h1><%= product.name %></h1>
-      <p id="description-<%= product.id %>"><%= truncate product.description %></p>
-      <%= button_tag "More Info", class: "js-more", data: { id: product.id } %>
+      <h1><%=prod.name %></h1>
+      <p id="description-<%= prod.id %>"><%= truncate prod.description%></p>
+      <%=button_tag "More Info", class: "js-more", data: { id: prod.id }%>
     </li>
-  <% end %>
+  <%end%>
 </ul>
 
 <script type="text/javascript" charset="utf-8">
@@ -18,7 +18,8 @@
       $.get("/inventory/" + id, function(data) {
         if(data === "true") {
           document.getElementById("description-" + id).innerHTML += "<br><br>Available";
-        } else {
+        } 
+        else {
           document.getElementById("description-" + id).innerHTML += "<br><br>Sold Out";
         }
       });
