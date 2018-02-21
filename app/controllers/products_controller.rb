@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.find_or_create_by(prod_params)
-    redirect to products_path
+    redirect_to products_path
   end
 
   def inventory
